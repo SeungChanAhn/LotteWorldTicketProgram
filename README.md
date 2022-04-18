@@ -1,1 +1,1 @@
-# LotteWorldTicketProgram
+# java를 활용한 롯데월드 티켓 프로그램
