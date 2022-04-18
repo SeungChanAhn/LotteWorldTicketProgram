@@ -274,7 +274,7 @@ public class lottewolrd_220418 {
 				String all = ticketChoice_ST + "\t\t" + timeChoice_ST + "\t\t\t" + personType_ST + "\t\t" + ticketCount
 						+ "장" + "\t\t" + sumPrice + "원" + "\t" + alwaysPrefer_ST + "\n";
 				orderList.add(all);
-
+				orderCount++;
 				// 계속구매 혹은 종료
 				System.out.printf("\n\n계속 구매하시겠습니까?\n");
 				System.out.printf("1. 계속 구매\n2. 종료 후 계산\n선택 : ");
@@ -290,7 +290,9 @@ public class lottewolrd_220418 {
 			System.out.printf("티켓종류\t\t이용시간\t\t구분\t\t수량\t\t가격\t\t할인내역\n");
 			System.out.printf(
 					"-------------------------------------------------------------------------------------------------------------\n");
-			System.out.println(orderList);
+			for (int i = 0; i < orderCount; i++) {
+				System.out.println(orderList.get(i));
+			}
 			System.out.printf(
 					"\n-------------------------------------------------------------------------------------------------------------\n");
 			System.out.printf("결제금액\t\t\t\t\t\t\t\t\t\t%19d원", totalprice);
