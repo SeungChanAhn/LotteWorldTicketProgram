@@ -9,8 +9,7 @@ public class Receipt {
 	}
 
 	ArrayList orderList = new ArrayList();
-
-	int totalPrice = 0;
+	ArrayList price = new ArrayList();
 	
 	public void changeST() {		
 //		data = new OrderData();
@@ -23,16 +22,16 @@ public class Receipt {
 
 		switch (cal.input.data.ticketChoice) {
 		case 1:
-			ticket = "Á¾ÇÕÀÌ¿ë±Ç";
+			ticket = "ì¢…í•©ì´ìš©ê¶Œ";
 			break;
 		case 2:
-			ticket = "ÆÄÅ©ÀÌ¿ë±Ç";
+			ticket = "íŒŒí¬ì´ìš©ê¶Œ";
 			break;
 		}
 
 		switch (cal.input.data.timeChoice) {
 		case 1:
-			time = "Á¾ÀÏ±Ç";
+			time = "ì¢…ì¼ê¶Œ";
 			break;
 		case 2:
 			time = "After4";
@@ -41,60 +40,65 @@ public class Receipt {
 		
 		switch (cal.input.data.personTypeByAge) {
 		case 0:
-			ageCategory = "³ëÀÎ";
+			ageCategory = "ë…¸ì¸";
 			break;
 		case 1:
-			ageCategory = "¾î¸¥";
+			ageCategory = "ì–´ë¥¸";
 			break;
 		case 2:
-			ageCategory = "Ã»¼Ò³â";
+			ageCategory = "ì²­ì†Œë…„";
 			break;
 		case 3:
-			ageCategory = "¾î¸°ÀÌ";
+			ageCategory = "ì–´ë¦°ì´";
 			break;
 		case 4:
-			ageCategory = "º£ÀÌºñ";
+			ageCategory = "ë² ì´ë¹„";
 			break;
 		}
 		
 		switch (cal.input.data.alwaysPrefer) {
 		case 0:
-			prefer = "°æ·Î ¿ì´ë";
+			prefer = "ê²½ë¡œ ìš°ëŒ€";
 			break;
 		case 1:
-			prefer = "Àå¾ÖÀÎ ¿ì´ë";
+			prefer = "ì¥ì• ì¸ ìš°ëŒ€";
 			break;
 		case 2:
-			prefer = "±¹°¡À¯°øÀÚ ¿ì´ë";
+			prefer = "êµ­ê°€ìœ ê³µì ìš°ëŒ€";
 			break;
 		case 3:
-			prefer = "ÈŞ°¡±ºÀÎ ¿ì´ë";
+			prefer = "íœ´ê°€êµ°ì¸ ìš°ëŒ€";
 			break;
 		case 4:
-			prefer = "ÀÓ»êºÎ ¿ì´ë";
+			prefer = "ì„ì‚°ë¶€ ìš°ëŒ€";
 			break;
 		case 5:
-			prefer = "´ÙµÕÀÌ°¡Á· ¿ì´ë";
+			prefer = "ë‹¤ë‘¥ì´ê°€ì¡± ìš°ëŒ€";
 			break;
 		case 6:
-			prefer = "ÇØ´ç»çÇ× ¾øÀ½";
+			prefer = "í•´ë‹¹ì‚¬í•­ ì—†ìŒ";
 			break;
 		}
 
-		String all = ticket + "\t\t" + time + "\t\t\t" + ageCategory + "\t\t" + cal.input.data.numberOfTickets + "Àå" + "\t\t" + cal.input.data.priceSum + "¿ø" + "\t\t" + prefer + "\n";
+		String all = ticket + "\t\t" + time + "\t\t\t" + ageCategory + "\t\t" + cal.input.data.numberOfTickets + "ì¥" + "\t\t" + cal.input.data.priceSum + "ì›" + "\t\t" + prefer + "\n";
 		orderList.add(all);
+		price.add(cal.input.data.priceSum);
 		
 
 	}
 
 	public void printReceipt() {
+		int sum = 0;
+		for (int i = 0; i < price.size(); i++) {
+			sum += (int) price.get(i);
+		}
 		System.out.printf(
 				"=============================================================================================================\n");
-		System.out.printf("\n\n                                                ·Ô µ¥ ¿ù µå\n");
+		System.out.printf("\n\n                                                ë¡¯ ë° ì›” ë“œ\n");
 		System.out.printf("\n                                                     \n");
 		System.out.printf(
 				"=============================================================================================================\n");
-		System.out.printf("Æ¼ÄÏÁ¾·ù\t\tÀÌ¿ë½Ã°£\t\t±¸ºĞ\t\t¼ö·®\t\t°¡°İ\t\tÇÒÀÎ³»¿ª\n");
+		System.out.printf("í‹°ì¼“ì¢…ë¥˜\t\tì´ìš©ì‹œê°„\t\têµ¬ë¶„\t\tìˆ˜ëŸ‰\t\tê°€ê²©\t\tí• ì¸ë‚´ì—­\n");
 		System.out.printf(
 				"-------------------------------------------------------------------------------------------------------------\n");
 		for (int i = 0; i < orderList.size(); i++) {
@@ -102,7 +106,7 @@ public class Receipt {
 		}
 		System.out.printf(
 				"\n-------------------------------------------------------------------------------------------------------------\n");
-		System.out.printf("°áÁ¦±İ¾×\t\t\t\t\t\t\t\t\t\t%19d¿ø", cal.input.data.totalPrice);
+		System.out.printf("ê²°ì œê¸ˆì•¡\t\t\t\t\t\t\t\t\t\t%19dì›", sum);
 		System.out.printf(
 				"\n=============================================================================================================\n");
 	}
