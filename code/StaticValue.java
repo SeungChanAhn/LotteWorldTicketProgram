@@ -52,22 +52,24 @@ public class StaticValue {
 	static final int KIDPLAYROOM_X = 2;
 	
 	// 우대혜택선택
-	static final int OLD = 0; // 경로우대
+	static final int NONE = 0;
 	static final int DISABLED = 1;
 	static final int NATIONAL_MERIT = 2;
 	static final int SODIER_ON_VACATION = 3;
 	static final int PREGNANT = 4;
 	static final int MULTIPLE_KIDS = 5;
-	static final int NONE = 6;
+	static final int OLD = 6; // 경로우대
+	
 	
 	// 우대혜택 할인율
-	static final int DISABLED_RATE = 1;
-	static final int NATIONAL_MERIT_RATE = 2;
-	static final int SODIER_ON_VACATION_RATE = 3;
-	static final int PREGNANT_RATE = 4;
-	static final int MULTIPLE_KIDS_RATE = 5;
+	static final double DISABLED_RATE = 0.5;
+	static final double NATIONAL_MERIT_RATE = 0.5;
+	static final double SODIER_ON_VACATION_RATE = 0.49;
+	static final double PREGNANT_RATE = 0.5;
+	static final double MULTIPLE_KIDS_RATE = 0.3;
 	
 	// 더 구매할지 안할지 선택
 	static final int KEEP_BUYING = 1;
+	static final int PRICE_CHECK = 2;
 	static final int EXIT = 2;
 }
