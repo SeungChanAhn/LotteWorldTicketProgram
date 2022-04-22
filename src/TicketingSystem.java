@@ -12,18 +12,16 @@ public class TicketingSystem {
 		Print print;
 		print = new Print(cal);
 		
-		CSVfile cf  = new CSVfile (cal);
-		
 		do {
 			do {
-				// ÀÔ·Â
+				// ì…ë ¥
 				input.TicketChoice();
 				input.TimeChoice();
 				input.IDNumber();
 				input.NumberOfTickets();
 				input.AlwaysPrefer();
 				
-				// °è»ê°ú À¯¾Æ³îÀÌ½Ã¼³ ÀÌ¿ëÀ¯¹« ÀÔ·Â
+				// ê³„ì‚°ê³¼ ìœ ì•„ë†€ì´ì‹œì„¤ ì´ìš©ìœ ë¬´ ì…ë ¥
 				cal.InternationalAge();
 				cal.AgeCategory();
 				cal.PriceByAge();
@@ -32,30 +30,30 @@ public class TicketingSystem {
 				cal.PriceByNoPreferOld();
 				cal.AddPrice();
 				
-				// °è¼Ó ±¸¸ÅÇÒÁö ¿µ¼öÁõ °¡°İÀ» È®ÀÎÇÒÁö ¼±ÅÃ¹Ş±â.
+				// ê³„ì† êµ¬ë§¤í• ì§€ ì˜ìˆ˜ì¦ ê°€ê²©ì„ í™•ì¸í• ì§€ ì„ íƒë°›ê¸°.
 				input.WhetherToBuy();
 				
-				// ÀÔ·Â ¹ŞÀº ¼ıÀÚ¸¦ ¿µ¼öÁõ¿¡¼­ º¸±â ½±°Ô ¹®ÀÚ·Î º¯È¯
+				// ì…ë ¥ ë°›ì€ ìˆ«ìë¥¼ ì˜ìˆ˜ì¦ì—ì„œ ë³´ê¸° ì‰½ê²Œ ë¬¸ìë¡œ ë³€í™˜
 				print.ReadyPrintReceipt();
 				
 			} while (input.data.getWhetherToBuy() == 1);
 			
-			// ¿µ¼öÁõ Ãâ·Â
+			// ì˜ìˆ˜ì¦ ì¶œë ¥
 			print.printReceipt();
 			
-			// ¿µ¼öÁõ °¡°İÀ» È®ÀÎÇÏ°í, °è¼Ó ±¸¸ÅÇÒÁö Á¾·áÇÏ°í °è»êÇÒÁö ¼±ÅÃ¹Ş±â.
+			// ì˜ìˆ˜ì¦ ê°€ê²©ì„ í™•ì¸í•˜ê³ , ê³„ì† êµ¬ë§¤í• ì§€ ì¢…ë£Œí•˜ê³  ê³„ì‚°í• ì§€ ì„ íƒë°›ê¸°.
 			input.ExitOrNot();
 			
 		} while (input.data.getWhetherToBuy() == 1);		
 		
-		print.writeCsv(print.analysisList); // ±¸¸Å³»¿ªÀ» CSVÆÄÀÏ·Î ÀúÀå
+		print.writeCsv(print.analysisList); // êµ¬ë§¤ë‚´ì—­ì„ CSVíŒŒì¼ë¡œ ì €ì¥
 		
-		print.readCSVFile(); // CSV ÆÄÀÏÀ» ¹è¿­¿¡ ÀúÀåÇÏ°í Ãâ·ÂÇÑ´Ù.
+		print.readCSVFile(); // CSV íŒŒì¼ì„ ë°°ì—´ì— ì €ì¥í•˜ê³  ì¶œë ¥í•œë‹¤.
 		
-		print.TicketTypeAnalysis(); // ±ÇÁ¾º° ¸ÅÃâÇ¥
+		print.TicketTypeAnalysis(); // ê¶Œì¢…ë³„ ë§¤ì¶œí‘œ
 		
-		print.TicketTimeAnalysis(); // ÀÌ¿ë½Ã°£º° ¸ÅÃâÇ¥
+		print.TicketTimeAnalysis(); // ì´ìš©ì‹œê°„ë³„ ë§¤ì¶œí‘œ
 		
-		print.preferAnalysis(); // ¿ì´ë±Ç ÆÇ¸ÅÇöÈ²Ç¥
+		print.preferAnalysis(); // ìš°ëŒ€ê¶Œ íŒë§¤í˜„í™©í‘œ
 	}
 }
