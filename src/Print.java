@@ -12,20 +12,18 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import java.util.Scanner;
 
 public class Print {
-	Scanner sc = new Scanner(System.in);
 	Calculation cal;
 
 	Print(Calculation cal) {
 		this.cal = cal;
 	}
 
-	ArrayList orderList = new ArrayList(); // ¿µ¼öÁõ Ãâ·Â ¸®½ºÆ®
-	ArrayList price = new ArrayList(); // °¡°İ ÀúÀå ¸®½ºÆ®
-	ArrayList analysisList = new ArrayList(); // CSVÆÄÀÏ ¸®½ºÆ®
-	String[][] readList = new String[100][6]; // CSVÆÄÀÏ ÀĞ¾î¿Í¼­ ¹è¿­¿¡ ÀúÀå
+	ArrayList orderList = new ArrayList(); // ì˜ìˆ˜ì¦ ì¶œë ¥ ë¦¬ìŠ¤íŠ¸
+	ArrayList price = new ArrayList(); // ê°€ê²© ì €ì¥ ë¦¬ìŠ¤íŠ¸
+	ArrayList analysisList = new ArrayList(); // CSVíŒŒì¼ ë¦¬ìŠ¤íŠ¸
+	String[][] readList = new String[100][6]; // CSVíŒŒì¼ ì½ì–´ì™€ì„œ ë°°ì—´ì— ì €ì¥
 
 	public void ReadyPrintReceipt() {
 		String ticket = null;
@@ -36,16 +34,16 @@ public class Print {
 
 		switch (cal.input.data.getTicketChoice()) {
 		case 1:
-			ticket = "Á¾ÇÕÀÌ¿ë±Ç";
+			ticket = "ì¢…í•©ì´ìš©ê¶Œ";
 			break;
 		case 2:
-			ticket = "ÆÄÅ©ÀÌ¿ë±Ç";
+			ticket = "íŒŒí¬ì´ìš©ê¶Œ";
 			break;
 		}
 
 		switch (cal.input.data.getTimeChoice()) {
 		case 1:
-			time = "Á¾ÀÏ±Ç";
+			time = "ì¢…ì¼ê¶Œ";
 			break;
 		case 2:
 			time = "After4";
@@ -54,62 +52,62 @@ public class Print {
 
 		switch (cal.input.data.getPersonTypeByAge()) {
 		case 0:
-			ageCategory = "³ëÀÎ";
+			ageCategory = "ë…¸ì¸";
 			break;
 		case 1:
-			ageCategory = "¾î¸¥";
+			ageCategory = "ì–´ë¥¸";
 			break;
 		case 2:
-			ageCategory = "Ã»¼Ò³â";
+			ageCategory = "ì²­ì†Œë…„";
 			break;
 		case 3:
-			ageCategory = "¾î¸°ÀÌ";
+			ageCategory = "ì–´ë¦°ì´";
 			break;
 		case 4:
-			ageCategory = "º£ÀÌºñ";
+			ageCategory = "ë² ì´ë¹„";
 			break;
 		}
 
 		switch (cal.input.data.getAlwaysPrefer()) {
 		case 0:
-			prefer = "ÇØ´ç¾øÀ½";
+			prefer = "í•´ë‹¹ì—†ìŒ";
 			break;
 		case 1:
-			prefer = "Àå¾ÖÀÎ";
+			prefer = "ì¥ì• ì¸";
 			break;
 		case 2:
-			prefer = "±¹°¡À¯°øÀÚ";
+			prefer = "êµ­ê°€ìœ ê³µì";
 			break;
 		case 3:
-			prefer = "ÈŞ°¡±ºÀÎ";
+			prefer = "íœ´ê°€êµ°ì¸";
 			break;
 		case 4:
-			prefer = "ÀÓ»êºÎ";
+			prefer = "ì„ì‚°ë¶€";
 			break;
 		case 5:
-			prefer = "´ÙµÕÀÌ°¡Á·";
+			prefer = "ë‹¤ë‘¥ì´ê°€ì¡±";
 			break;
 		case 6:
-			prefer = "°æ·Î¿ì´ë";
+			prefer = "ê²½ë¡œìš°ëŒ€";
 			break;
 		}
 
-		// ¿µ¼öÁõ Ãâ·Â ¸®½ºÆ®
+		// ì˜ìˆ˜ì¦ ì¶œë ¥ ë¦¬ìŠ¤íŠ¸
 		String all = null;
-		if (cal.input.data.getPriceSum() >= 100000) { // 10¸¸¿ø ³Ñ¾î°¡¸é ¿µ¼öÁõ ÁÙ ¸ÂÃã..
-			all = ticket + "\t\t" + time + "\t\t\t" + ageCategory + "\t\t" + cal.input.data.getNumberOfTickets() + "Àå"
-					+ "\t\t" + cal.input.data.getPriceSum() + "¿ø" + "\t" + prefer + "\n";
+		if (cal.input.data.getPriceSum() >= 100000) { // 10ë§Œì› ë„˜ì–´ê°€ë©´ ì˜ìˆ˜ì¦ ì¤„ ë§ì¶¤..
+			all = ticket + "\t\t" + time + "\t\t\t" + ageCategory + "\t\t" + cal.input.data.getNumberOfTickets() + "ì¥"
+					+ "\t\t" + cal.input.data.getPriceSum() + "ì›" + "\t" + prefer + "\n";
 		} else {
-			all = ticket + "\t\t" + time + "\t\t\t" + ageCategory + "\t\t" + cal.input.data.getNumberOfTickets() + "Àå"
-					+ "\t\t" + cal.input.data.getPriceSum() + "¿ø" + "\t\t" + prefer + "\n";
+			all = ticket + "\t\t" + time + "\t\t\t" + ageCategory + "\t\t" + cal.input.data.getNumberOfTickets() + "ì¥"
+					+ "\t\t" + cal.input.data.getPriceSum() + "ì›" + "\t\t" + prefer + "\n";
 		}
 
 		orderList.add(all);
 
-		// ¸Å ±¸¸Å¸¶´Ù °¡°İ*¼ö·®À» ¸®½ºÆ®·Î ¸¸µé±â (ÃÑ ±İ¾× °è»ê)
+		// ë§¤ êµ¬ë§¤ë§ˆë‹¤ ê°€ê²©*ìˆ˜ëŸ‰ì„ ë¦¬ìŠ¤íŠ¸ë¡œ ë§Œë“¤ê¸° (ì´ ê¸ˆì•¡ ê³„ì‚°)
 		price.add(cal.input.data.getPriceSum());
 
-		// CSVÆÄÀÏ·Î ÀúÀåÇÒ ºĞ¼® ¸®½ºÆ®
+		// CSVíŒŒì¼ë¡œ ì €ì¥í•  ë¶„ì„ ë¦¬ìŠ¤íŠ¸
 		String analysis = ticket + "," + time + "," + ageCategory + "," + cal.input.data.getNumberOfTickets() + ","
 				+ cal.input.data.getPriceSum() + "," + prefer + "\n";
 		analysisList.add(analysis);
@@ -117,16 +115,16 @@ public class Print {
 	}
 
 	public void printReceipt() {
-		Calendar calendar = Calendar.getInstance(); // ÇöÀç ³¯Â¥ °¡Á®¿À±â
+		Calendar calendar = Calendar.getInstance(); // í˜„ì¬ ë‚ ì§œ ê°€ì ¸ì˜¤ê¸°
 		SimpleDateFormat sdt = new SimpleDateFormat("YYYY/MM/dd HH:mm:ss");
 
 		System.out.printf(
 				"=============================================================================================================\n");
-		System.out.printf("\n\n                                                ·Ô µ¥ ¿ù µå\n\n");
+		System.out.printf("\n\n                                                ë¡¯ ë° ì›” ë“œ\n\n");
 		System.out.printf("\t\t\t\t\t\t\t\t\t\t\t%s\n", sdt.format(calendar.getTime()));
 		System.out.printf(
 				"=============================================================================================================\n");
-		System.out.printf("Æ¼ÄÏÁ¾·ù\t\tÀÌ¿ë½Ã°£\t\t±¸ºĞ\t\t¼ö·®\t\t°¡°İ\t\tÇÒÀÎ³»¿ª\n");
+		System.out.printf("í‹°ì¼“ì¢…ë¥˜\t\tì´ìš©ì‹œê°„\t\têµ¬ë¶„\t\tìˆ˜ëŸ‰\t\tê°€ê²©\t\tí• ì¸ë‚´ì—­\n");
 		System.out.printf(
 				"-------------------------------------------------------------------------------------------------------------\n");
 		for (int index = 0; index < orderList.size(); index++) {
@@ -134,16 +132,16 @@ public class Print {
 		}
 		System.out.printf(
 				"-------------------------------------------------------------------------------------------------------------\n");
-		int totalPriceSum = 0; // °áÁ¦±İ¾× °è»ê
+		int totalPriceSum = 0; // ê²°ì œê¸ˆì•¡ ê³„ì‚°
 		for (int index = 0; index < price.size(); index++) {
 			totalPriceSum += (int) price.get(index);
 		}
-		System.out.printf("°áÁ¦±İ¾×\t\t\t\t\t\t\t\t\t\t%19d¿ø", totalPriceSum);
+		System.out.printf("ê²°ì œê¸ˆì•¡\t\t\t\t\t\t\t\t\t\t%19dì›", totalPriceSum);
 		System.out.printf(
 				"\n=============================================================================================================\n");
 	}
 
-	// analysisList¸¦ CSVÆÄÀÏ·Î ³»º¸³»±â
+	// analysisListë¥¼ CSVíŒŒì¼ë¡œ ë‚´ë³´ë‚´ê¸°
 	public void writeCsv(ArrayList<String> list) {
 		String fileName = "C:\\ticketing\\test1.csv";
 		FileOutputStream out = null;
@@ -152,7 +150,7 @@ public class Print {
 			for (String analysisList : list) {
 				out.write(analysisList.getBytes());
 			}
-			System.out.println("\n¢º ÆÄÀÏÀÌ Cµå¶óÀÌºê ticketing Æú´õ¿¡ ÀúÀåµÇ¾ú½À´Ï´Ù.\n");
+			System.out.println("\nâ–¶ íŒŒì¼ì´ Cë“œë¼ì´ë¸Œ ticketing í´ë”ì— ì €ì¥ë˜ì—ˆìŠµë‹ˆë‹¤.\n");
 		} catch (FileNotFoundException e) {
 			System.out.println(e.getMessage());
 		} catch (IOException e) {
@@ -165,10 +163,10 @@ public class Print {
 		}
 	}
 
-	// CSVÆÄÀÏ ÀĞ¾î¿À±â
+	// CSVíŒŒì¼ ì½ì–´ì˜¤ê¸°
 	public void readCSVFile() {
-		System.out.println("¢º CSVÆÄÀÏ ºÒ·¯¿À±â\n");
-		System.out.println("Æ¼ÄÏÁ¾·ù ÀÌ¿ë½Ã°£ ±¸ºĞ ¼ö·® °¡°İ ¿ì´ë»çÇ×");
+		System.out.println("â–¶ CSVíŒŒì¼ ë¶ˆëŸ¬ì˜¤ê¸°\n");
+		System.out.println("í‹°ì¼“ì¢…ë¥˜ ì´ìš©ì‹œê°„ êµ¬ë¶„ ìˆ˜ëŸ‰ ê°€ê²© ìš°ëŒ€ì‚¬í•­");
 		try {
 			File csv = new File("C:\\ticketing\\test1.csv");
 			BufferedReader br = new BufferedReader(new FileReader(csv));
@@ -178,12 +176,12 @@ public class Print {
 			while ((line = br.readLine()) != null) {
 				String[] token = line.split(",");
 
-				// ¹è¿­¿¡ ³Ö±â
+				// ë°°ì—´ì— ë„£ê¸°
 				for (int index = 0; index < 6; index++) {
 					readList[row][index] = token[index];
 				}
 
-				// CSV¿¡¼­ ÀĞ¾î ¹è¿­¿¡ ¿Å±ä ÀÚ·á È®ÀÎÇÏ±â À§ÇØ ÀüÃ¼ Ãâ·Â
+				// CSVì—ì„œ ì½ì–´ ë°°ì—´ì— ì˜®ê¸´ ìë£Œ í™•ì¸í•˜ê¸° ìœ„í•´ ì „ì²´ ì¶œë ¥
 				for (int index = 0; index < 6; index++) {
 					System.out.print(readList[row][index] + " ");
 				}
@@ -198,7 +196,7 @@ public class Print {
 		}
 	}
 
-	// ±ÇÁ¾º° ¸ÅÃâ ºĞ¼®
+	// ê¶Œì¢…ë³„ ë§¤ì¶œ ë¶„ì„
 	public void TicketTypeAnalysis() {
 		int allPass_Sales = 0;
 		int allPass_Count = 0;
@@ -224,35 +222,35 @@ public class Print {
 			while ((line = br.readLine()) != null) {
 				String token[] = line.split(",");
 
-				if (line.contains("Á¾ÇÕÀÌ¿ë±Ç")) {
+				if (line.contains("ì¢…í•©ì´ìš©ê¶Œ")) {
 					allPass_Count += Integer.parseInt(token[3]);
 					allPass_Sales += Integer.parseInt(token[4]);
-					if (line.contains("º£ÀÌºñ")) {
+					if (line.contains("ë² ì´ë¹„")) {
 						allPass_Count_Baby += Integer.parseInt(token[3]);
-					} else if (line.contains("¾î¸°ÀÌ")) {
+					} else if (line.contains("ì–´ë¦°ì´")) {
 						allPass_Count_Kid += Integer.parseInt(token[3]);
-					} else if (line.contains("Ã»¼Ò³â")) {
+					} else if (line.contains("ì²­ì†Œë…„")) {
 						allPass_Count_Teen += Integer.parseInt(token[3]);
-					} else if (line.contains("¾î¸¥")) {
+					} else if (line.contains("ì–´ë¥¸")) {
 						allPass_Count_Adult += Integer.parseInt(token[3]);
-					} else if (line.contains("³ëÀÎ")) {
+					} else if (line.contains("ë…¸ì¸")) {
 						allPass_Count_Old += Integer.parseInt(token[3]);
 					} else {
 					}
 				}
 
-				if (line.contains("ÆÄÅ©ÀÌ¿ë±Ç")) {
+				if (line.contains("íŒŒí¬ì´ìš©ê¶Œ")) {
 					parkPass_Count += Integer.parseInt(token[3]);
 					parkPass_Sales += Integer.parseInt(token[4]);
-					if (line.contains("º£ÀÌºñ")) {
+					if (line.contains("ë² ì´ë¹„")) {
 						parkPass_Count_Baby += Integer.parseInt(token[3]);
-					} else if (line.contains("¾î¸°ÀÌ")) {
+					} else if (line.contains("ì–´ë¦°ì´")) {
 						parkPass_Count_Kid += Integer.parseInt(token[3]);
-					} else if (line.contains("Ã»¼Ò³â")) {
+					} else if (line.contains("ì²­ì†Œë…„")) {
 						parkPass_Count_Teen += Integer.parseInt(token[3]);
-					} else if (line.contains("¾î¸¥")) {
+					} else if (line.contains("ì–´ë¥¸")) {
 						parkPass_Count_Adult += Integer.parseInt(token[3]);
-					} else if (line.contains("³ëÀÎ")) {
+					} else if (line.contains("ë…¸ì¸")) {
 						parkPass_Count_Old += Integer.parseInt(token[3]);
 					} else {
 					}
@@ -264,15 +262,15 @@ public class Print {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		System.out.printf("\n\n===================== ±ÇÁ¾º° ¸ÅÃâ =====================\n");
-		System.out.printf("Á¾ÇÕÀÌ¿ë±Ç ÃÑ %d¸Å\n", allPass_Count);
-		System.out.printf("º£ÀÌºñ %d¸Å ¾î¸°ÀÌ %d¸Å Ã»¼Ò³â %d¸Å ¾î¸¥ %d¸Å ³ëÀÎ %d¸Å\n", allPass_Count_Baby, allPass_Count_Kid,
+		System.out.printf("\n\n===================== ê¶Œì¢…ë³„ ë§¤ì¶œ =====================\n");
+		System.out.printf("ì¢…í•©ì´ìš©ê¶Œ ì´ %dë§¤\n", allPass_Count);
+		System.out.printf("ë² ì´ë¹„ %dë§¤ ì–´ë¦°ì´ %dë§¤ ì²­ì†Œë…„ %dë§¤ ì–´ë¥¸ %dë§¤ ë…¸ì¸ %dë§¤\n", allPass_Count_Baby, allPass_Count_Kid,
 				allPass_Count_Teen, allPass_Count_Adult, allPass_Count_Old);
-		System.out.printf("Á¾ÇÕÀÌ¿ë±Ç ¸ÅÃâ %d¿ø\n\n", allPass_Sales);
-		System.out.printf("ÆÄÅ©ÀÌ¿ë±Ç ÃÑ %d¸Å\n", parkPass_Count);
-		System.out.printf("º£ÀÌºñ %d¸Å ¾î¸°ÀÌ %d¸Å Ã»¼Ò³â %d¸Å ¾î¸¥ %d¸Å ³ëÀÎ %d¸Å\n", parkPass_Count_Baby, parkPass_Count_Kid,
+		System.out.printf("ì¢…í•©ì´ìš©ê¶Œ ë§¤ì¶œ %dì›\n\n", allPass_Sales);
+		System.out.printf("íŒŒí¬ì´ìš©ê¶Œ ì´ %dë§¤\n", parkPass_Count);
+		System.out.printf("ë² ì´ë¹„ %dë§¤ ì–´ë¦°ì´ %dë§¤ ì²­ì†Œë…„ %dë§¤ ì–´ë¥¸ %dë§¤ ë…¸ì¸ %dë§¤\n", parkPass_Count_Baby, parkPass_Count_Kid,
 				parkPass_Count_Teen, parkPass_Count_Adult, parkPass_Count_Old);
-		System.out.printf("ÆÄÅ©ÀÌ¿ë±Ç ¸ÅÃâ %d¿ø\n", parkPass_Sales);
+		System.out.printf("íŒŒí¬ì´ìš©ê¶Œ ë§¤ì¶œ %dì›\n", parkPass_Sales);
 		System.out.printf("=======================================================");
 	}
 	
@@ -301,18 +299,18 @@ public class Print {
 			while ((line = br.readLine()) != null) {
 				String token[] = line.split(",");
 
-				if (line.contains("Á¾ÀÏ±Ç")) {
+				if (line.contains("ì¢…ì¼ê¶Œ")) {
 					allday_Count += Integer.parseInt(token[3]);
 					allday_Sales += Integer.parseInt(token[4]);
-					if (line.contains("º£ÀÌºñ")) {
+					if (line.contains("ë² ì´ë¹„")) {
 						allday_Count_Baby += Integer.parseInt(token[3]);
-					} else if (line.contains("¾î¸°ÀÌ")) {
+					} else if (line.contains("ì–´ë¦°ì´")) {
 						allday_Count_Kid += Integer.parseInt(token[3]);
-					} else if (line.contains("Ã»¼Ò³â")) {
+					} else if (line.contains("ì²­ì†Œë…„")) {
 						allday_Count_Teen += Integer.parseInt(token[3]);
-					} else if (line.contains("¾î¸¥")) {
+					} else if (line.contains("ì–´ë¥¸")) {
 						allday_Count_Adult += Integer.parseInt(token[3]);
-					} else if (line.contains("³ëÀÎ")) {
+					} else if (line.contains("ë…¸ì¸")) {
 						allday_Count_Old += Integer.parseInt(token[3]);
 					} else {
 					}
@@ -321,15 +319,15 @@ public class Print {
 				if (line.contains("After4")) {
 					after4_Count += Integer.parseInt(token[3]);
 					after4_Sales += Integer.parseInt(token[4]);
-					if (line.contains("º£ÀÌºñ")) {
+					if (line.contains("ë² ì´ë¹„")) {
 						after4_Count_Baby += Integer.parseInt(token[3]);
-					} else if (line.contains("¾î¸°ÀÌ")) {
+					} else if (line.contains("ì–´ë¦°ì´")) {
 						after4_Count_Kid += Integer.parseInt(token[3]);
-					} else if (line.contains("Ã»¼Ò³â")) {
+					} else if (line.contains("ì²­ì†Œë…„")) {
 						after4_Count_Teen += Integer.parseInt(token[3]);
-					} else if (line.contains("¾î¸¥")) {
+					} else if (line.contains("ì–´ë¥¸")) {
 						after4_Count_Adult += Integer.parseInt(token[3]);
-					} else if (line.contains("³ëÀÎ")) {
+					} else if (line.contains("ë…¸ì¸")) {
 						after4_Count_Old += Integer.parseInt(token[3]);
 					} else {
 					}
@@ -341,20 +339,20 @@ public class Print {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		System.out.printf("\n\n=================== ÀÌ¿ë½Ã°£º° ¸ÅÃâ ===================\n");
-		System.out.printf("Á¾ÀÏ±Ç ÃÑ %d¸Å\n", allday_Count);
-		System.out.printf("º£ÀÌºñ %d¸Å ¾î¸°ÀÌ %d¸Å Ã»¼Ò³â %d¸Å ¾î¸¥ %d¸Å ³ëÀÎ %d¸Å\n", allday_Count_Baby, allday_Count_Kid,
+		System.out.printf("\n\n=================== ì´ìš©ì‹œê°„ë³„ ë§¤ì¶œ ===================\n");
+		System.out.printf("ì¢…ì¼ê¶Œ ì´ %dë§¤\n", allday_Count);
+		System.out.printf("ë² ì´ë¹„ %dë§¤ ì–´ë¦°ì´ %dë§¤ ì²­ì†Œë…„ %dë§¤ ì–´ë¥¸ %dë§¤ ë…¸ì¸ %dë§¤\n", allday_Count_Baby, allday_Count_Kid,
 				allday_Count_Teen, allday_Count_Adult, allday_Count_Old);
-		System.out.printf("Á¾ÀÏ±Ç ¸ÅÃâ %d¿ø\n\n", allday_Sales);
-		System.out.printf("After4 ÀÌ¿ë±Ç ÃÑ %d¸Å\n", after4_Count);
-		System.out.printf("º£ÀÌºñ %d¸Å ¾î¸°ÀÌ %d¸Å Ã»¼Ò³â %d¸Å ¾î¸¥ %d¸Å ³ëÀÎ %d¸Å\n", after4_Count_Baby, after4_Count_Kid,
+		System.out.printf("ì¢…ì¼ê¶Œ ë§¤ì¶œ %dì›\n\n", allday_Sales);
+		System.out.printf("After4 ì´ìš©ê¶Œ ì´ %dë§¤\n", after4_Count);
+		System.out.printf("ë² ì´ë¹„ %dë§¤ ì–´ë¦°ì´ %dë§¤ ì²­ì†Œë…„ %dë§¤ ì–´ë¥¸ %dë§¤ ë…¸ì¸ %dë§¤\n", after4_Count_Baby, after4_Count_Kid,
 				after4_Count_Teen, after4_Count_Adult, after4_Count_Old);
-		System.out.printf("After4 ÀÌ¿ë±Ç ¸ÅÃâ %d¿ø\n", after4_Sales);
+		System.out.printf("After4 ì´ìš©ê¶Œ ë§¤ì¶œ %dì›\n", after4_Sales);
 		System.out.printf("=======================================================");
 	}
 
 	public void preferAnalysis() {
-		int preferTicket_Count = 0; // ¿ì´ë±Ç¸¸ Ä«¿îÆ®
+		int preferTicket_Count = 0; // ìš°ëŒ€ê¶Œë§Œ ì¹´ìš´íŠ¸
 		int prefer_Count_Disabled = 0;
 		int prefer_Count_NationalMerit = 0;
 		int prefer_Count_Sordier = 0;
@@ -370,22 +368,22 @@ public class Print {
 			while ((line = br.readLine()) != null) {
 				String token[] = line.split(",");
 
-				if (line.contains("Àå¾ÖÀÎ")) {
+				if (line.contains("ì¥ì• ì¸")) {
 					prefer_Count_Disabled += Integer.parseInt(token[3]);
 					preferTicket_Count += Integer.parseInt(token[3]);
-				} else if (line.contains("±¹°¡À¯°øÀÚ")) {
+				} else if (line.contains("êµ­ê°€ìœ ê³µì")) {
 					prefer_Count_NationalMerit += Integer.parseInt(token[3]);
 					preferTicket_Count += Integer.parseInt(token[3]);
-				} else if (line.contains("ÈŞ°¡±ºÀÎ")) {
+				} else if (line.contains("íœ´ê°€êµ°ì¸")) {
 					prefer_Count_Sordier += Integer.parseInt(token[3]);
 					preferTicket_Count += Integer.parseInt(token[3]);
-				} else if (line.contains("ÀÓ»êºÎ")) {
+				} else if (line.contains("ì„ì‚°ë¶€")) {
 					prefer_Count_Pregnant += Integer.parseInt(token[3]);
 					preferTicket_Count += Integer.parseInt(token[3]);
-				} else if (line.contains("´ÙµÕÀÌ°¡Á·")) {
+				} else if (line.contains("ë‹¤ë‘¥ì´ê°€ì¡±")) {
 					prefer_Count_MultipleKids += Integer.parseInt(token[3]);
 					preferTicket_Count += Integer.parseInt(token[3]);
-				} else if (line.contains("°æ·Î¿ì´ë")) {
+				} else if (line.contains("ê²½ë¡œìš°ëŒ€")) {
 					prefer_Count_Old += Integer.parseInt(token[3]);
 					preferTicket_Count += Integer.parseInt(token[3]);
 				} else {
@@ -397,14 +395,14 @@ public class Print {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		System.out.printf("\n\n=================== ¿ì´ë±Ç ÆÇ¸Å ÇöÈ² ==================\n");
-		System.out.printf("ÃÑ ÆÇ¸Å Æ¼ÄÏ¼ö : %d¸Å\n", preferTicket_Count);
-		System.out.printf("Àå¾ÖÀÎ : %d¸Å\n", prefer_Count_Disabled);
-		System.out.printf("±¹°¡À¯°øÀÚ : %d¸Å\n", prefer_Count_NationalMerit);
-		System.out.printf("ÈŞ°¡±ºÀÎ : %d¸Å\n", prefer_Count_Sordier);
-		System.out.printf("ÀÓ»êºÎ : %d¸Å\n", prefer_Count_Pregnant);
-		System.out.printf("´ÙµÕÀÌ°¡Á· : %d¸Å\n", prefer_Count_MultipleKids);
-		System.out.printf("°æ·Î¿ì´ë : %d¸Å\n", prefer_Count_Old);
+		System.out.printf("\n\n=================== ìš°ëŒ€ê¶Œ íŒë§¤ í˜„í™© ==================\n");
+		System.out.printf("ì´ íŒë§¤ í‹°ì¼“ìˆ˜ : %dë§¤\n", preferTicket_Count);
+		System.out.printf("ì¥ì• ì¸ : %dë§¤\n", prefer_Count_Disabled);
+		System.out.printf("êµ­ê°€ìœ ê³µì : %dë§¤\n", prefer_Count_NationalMerit);
+		System.out.printf("íœ´ê°€êµ°ì¸ : %dë§¤\n", prefer_Count_Sordier);
+		System.out.printf("ì„ì‚°ë¶€ : %dë§¤\n", prefer_Count_Pregnant);
+		System.out.printf("ë‹¤ë‘¥ì´ê°€ì¡± : %dë§¤\n", prefer_Count_MultipleKids);
+		System.out.printf("ê²½ë¡œìš°ëŒ€ : %dë§¤\n", prefer_Count_Old);
 		System.out.printf("=======================================================");
 	}
 }
