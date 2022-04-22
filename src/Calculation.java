@@ -2,10 +2,8 @@ package Practice;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Scanner;
 
 public class Calculation {
-	Scanner sc = new Scanner(System.in);
 	Input input;
 
 	Calculation(Input input) {
@@ -130,33 +128,6 @@ public class Calculation {
 				&& input.data.getTimeChoice() == StaticValue.AFTER4_PASS
 				&& input.data.getPersonTypeByAge() == StaticValue.BABY) {
 			input.data.setPrice(input.data.getPrice() + StaticValue.BABY);
-		} else {
-		}
-	}
-
-	// 유아놀이시설 이용에 따른 금액 변경
-	public void UseKidplayroom() {
-		if (input.data.getRealAge() > StaticValue.BABY_AGE_0 && input.data.getRealAge() < StaticValue.BABY_AGE_1) {
-			input.data.setPrice(StaticValue.PRICE_FREE);
-		} else if (input.data.getRealAge() >= StaticValue.BABY_AGE_1
-				&& input.data.getRealAge() < StaticValue.KID_MIN_AGE) {
-			System.out.printf("\n\n만 1세에서 3세까지 유아 놀이시설은 유료로 이용 가능합니다. 이용하시겠습니까?\n");
-
-			do {
-				System.out.printf("1. 이용O\n2. 이용X (파크입장 무료)\n선택 : ");
-				input.data.setKidsPlayroom(sc.nextInt());
-				if (!(input.data.getKidsPlayroom() == StaticValue.KIDPLAYROOM_O
-						|| input.data.getKidsPlayroom() == StaticValue.KIDPLAYROOM_X)) {
-					System.out.printf("잘못된 입력입니다. 1 또는 2를 입력하세요.\n\n");
-				}
-			} while (!(input.data.getKidsPlayroom() == StaticValue.KIDPLAYROOM_O
-					|| input.data.getKidsPlayroom() == StaticValue.KIDPLAYROOM_X));
-
-			if (input.data.getKidsPlayroom() == StaticValue.KIDPLAYROOM_O) {
-				input.data.setPrice(StaticValue.PRICE_BABY);
-			} else if (input.data.getKidsPlayroom() == StaticValue.KIDPLAYROOM_X) {
-				input.data.setPrice(StaticValue.PRICE_FREE);
-			}
 		} else {
 		}
 	}

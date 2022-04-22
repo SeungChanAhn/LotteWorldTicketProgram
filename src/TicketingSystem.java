@@ -23,11 +23,11 @@ public class TicketingSystem {
 				input.NumberOfTickets();
 				input.AlwaysPrefer();
 				
-				// 계산
+				// 계산과 유아놀이시설 이용유무 입력
 				cal.InternationalAge();
 				cal.AgeCategory();
 				cal.PriceByAge();
-				cal.UseKidplayroom();
+				input.UseKidplayroom();
 				cal.PriceByPrefer();
 				cal.PriceByNoPreferOld();
 				cal.AddPrice();
@@ -46,9 +46,7 @@ public class TicketingSystem {
 			// 영수증 가격을 확인하고, 계속 구매할지 종료하고 계산할지 선택받기.
 			input.ExitOrNot();
 			
-		} while (input.data.getWhetherToBuy() == 1);
-		System.out.println("\n티켓 발권프로그램을 종료합니다. 이용해주셔서 감사합니다.");
-		
+		} while (input.data.getWhetherToBuy() == 1);		
 		
 		print.writeCsv(print.analysisList); // 구매내역을 CSV파일로 저장
 		
