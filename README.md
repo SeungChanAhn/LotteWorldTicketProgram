@@ -6,7 +6,13 @@
  - 한 종류의 티켓을 구매하면 구매내역과 금액을 확인하고 추가로 주문할지 선택, 결제예정금액을 확인하고 추가 주문과 종료후 결제할지 선택
 
 ## 발권 순서 (스크린샷)
-
+![11](https://user-images.githubusercontent.com/102018797/164570011-60b74609-c66b-4341-9e94-9fbce4d7892e.PNG)
+![22](https://user-images.githubusercontent.com/102018797/164570023-a64f4ad4-351d-49cf-a415-a1dd1719b09a.PNG)
+![33](https://user-images.githubusercontent.com/102018797/164570029-1cc5c717-be1c-4415-8dcb-a52c23e0c389.PNG)
+![44](https://user-images.githubusercontent.com/102018797/164570033-656c9790-4e94-4d70-ad68-7c8186f79543.PNG)
+![55](https://user-images.githubusercontent.com/102018797/164570036-91520156-75a3-40a5-80cc-25f024768a5e.PNG)
+![66](https://user-images.githubusercontent.com/102018797/164570038-e6ad7a93-fd7d-499a-b764-d016aeb15c44.PNG)
+![77](https://user-images.githubusercontent.com/102018797/164570041-10e62130-3fc5-4ea3-9c4e-081c3e66f190.PNG)
 
 ## 클래스 구분
  -  Main.java (Main)
