@@ -11,7 +11,7 @@
  -  Input.java (사용자의 입력값을 받음)
  -  Calculation.java (입력값을 바탕으로 나이, 티켓가격계산)
  -  Print.java (영수증 출력, CSV파일과 매출표 출력)
- -  OderData.java (변수 클래스)
+ -  OrderData.java (변수 클래스)
  -  StaticValue.java (상수)
 
 
@@ -28,5 +28,3 @@
  - C++에서 진행한 코드 java로 구현
  - 클래스 나누기
  - csv 파일로 내보내기, 읽어오기
- - 
- - 개선사항 (객체지향, 클래스, 생성자 개념 이해부족 / 예외처리 / 터치,키보드입력 클래스 / this 등...)
